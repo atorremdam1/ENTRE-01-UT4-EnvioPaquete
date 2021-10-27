@@ -2,13 +2,14 @@
 /**
  *  Representa una dimensión
  *  
- *  @author - 
+ *  @author - Alejandro Torreguitart
  */
 public class Dimension  
 {
     private double alto;
     private double ancho;
     private double largo;
+    private Dimension dimension;
 
     /**
      * constructor  
@@ -45,9 +46,8 @@ public class Dimension
      * Devuelve una copia exacta al objeto actual
      */
     public Dimension obtenerCopia() {
-        //TODO
-        return null;
-
+        dimension = new Dimension(alto,ancho,largo);
+        return dimension;
     }
 
     /**
@@ -55,8 +55,13 @@ public class Dimension
      * (leer enunciado)
      */
     public String toString() {
-        //TODO
-        return null;
+        String altura =  "                   Alto:         ";
+        String anchura = "                  Ancho:         ";
+        String largura=  "                  Largo:         ";
+        String formato = "%s\n%s\n%s";
+        String resultado = String.format(formato,altura,anchura,largura);
+
+        return resultado;
 
     }
 
