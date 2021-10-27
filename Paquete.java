@@ -18,9 +18,8 @@ public class Paquete
      * alto, ancho, largo (en cm) y peso 8 Kg
      */
     public Paquete()    {
-        //TODO
-         
-
+        dimension = new Dimension(40,30,50);
+        peso = 8;
     }
 
     /**
@@ -30,8 +29,9 @@ public class Paquete
      *  Se crea aquí el generador
      */
     public Paquete(double alto, double ancho, double largo)    {
-        //TODO
-
+        dimension = new Dimension(alto,ancho,largo);
+        generador = new Random();
+        peso = (generador.nextDouble() * 8.0) + 2.0;
     }
 
     /**
@@ -40,8 +40,8 @@ public class Paquete
      * 
      */
     public Paquete(Dimension dimension, double peso)    {
-        //TODO
-
+        dimension = dimension;
+        this.peso = peso;
     }
 
     /**
@@ -49,7 +49,6 @@ public class Paquete
      */
     public Dimension getDimension() {
         return this.dimension;
-
     }
 
     /**
@@ -57,7 +56,6 @@ public class Paquete
      */
     public double getPeso() {
         return this.peso;
-
     }
 
     /**
@@ -65,9 +63,7 @@ public class Paquete
      * El volumen = alto x ancho x largo
      */
     public double calcularVolumen() {
-       //TODO
-       return 0;
-
+        return dimension.getAncho() * dimension.getLargo() * dimension.getAlto(); 
     }
 
     /**
@@ -76,7 +72,7 @@ public class Paquete
      */
     public double calcularPesoVolumetrico() {
         //TODO
-       return 0;
+        return 0;
 
     }
 
@@ -87,10 +83,9 @@ public class Paquete
      */
     public double calcularPesoFacturable() {
         //TODO
-       return 0;
+        return 0;
 
     }
-
 
     /**
      * Devuelve una copia exacta al objeto actual
@@ -98,7 +93,7 @@ public class Paquete
      */
     public Paquete obtenerCopia() {
         //TODO
-       return null;
+        return null;
 
     }
 
@@ -108,10 +103,10 @@ public class Paquete
      */
     public String toString() {
         //TODO
-       return null;
+        return null;
 
     }
-    
+
     /**
      * Muestra en pantalla el objeto actual
      * Este método se incluye como método de prueba
@@ -120,7 +115,5 @@ public class Paquete
     public void print() {
         System.out.println(this.toString());
     }
-
-    
 
 }
