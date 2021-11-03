@@ -9,7 +9,6 @@ public class Dimension
     private double alto;
     private double ancho;
     private double largo;
-    private Dimension dimension;
 
     /**
      * constructor  
@@ -18,7 +17,6 @@ public class Dimension
         this.alto = alto;
         this.ancho = ancho;
         this.largo = largo;
-
     }   
 
     /**
@@ -46,7 +44,7 @@ public class Dimension
      * Devuelve una copia exacta al objeto actual
      */
     public Dimension obtenerCopia() {
-        dimension = new Dimension(alto,ancho,largo);
+        Dimension dimension = new Dimension(alto,ancho,largo);
         return dimension;
     }
 
@@ -55,11 +53,12 @@ public class Dimension
      * (leer enunciado)
      */
     public String toString() {
-        String altura =  "                   Alto:         ";
-        String anchura = "                  Ancho:         ";
-        String largura=  "                  Largo:         ";
-        String formato = "%s\n%s\n%s";
-        String resultado = String.format(formato,altura,anchura,largura);
+        String descrip = "Descripcion del paquete";
+        String altura =" Alto: ";        
+        String anchura ="Ancho: ";        
+        String largura="Largo: ";
+        String resultado = String.format("%s\n%20s%10.2f(cm)\n%20s%10.2f(cm)\n%20s%10.2f(cm)",
+                           descrip,altura,alto,anchura,ancho,largura,largo);
 
         return resultado;
 

@@ -31,7 +31,7 @@ public class Paquete
     public Paquete(double alto, double ancho, double largo)    {
         dimension = new Dimension(alto,ancho,largo);
         generador = new Random();
-        peso = (generador.nextDouble() * 8.0) + 2.0;
+        peso = (generador.nextDouble() * 6.0) + 2.0;
     }
 
     /**
@@ -40,14 +40,14 @@ public class Paquete
      * 
      */
     public Paquete(Dimension dimension, double peso)    {
-        dimension = dimension;
+        this.dimension = dimension;
         this.peso = peso;
     }
 
     /**
      * accesor para la dimensión
      */
-    public Dimension getDimension() {
+    public Dimension getDimension(){
         return this.dimension;
     }
 
@@ -71,9 +71,7 @@ public class Paquete
      * Peso volumétrico = volumen del paquete / 5000
      */
     public double calcularPesoVolumetrico() {
-        //TODO
-        return 0;
-
+        return calcularVolumen() / 5000;
     }
 
     /**
@@ -82,9 +80,7 @@ public class Paquete
      *      
      */
     public double calcularPesoFacturable() {
-        //TODO
-        return 0;
-
+        return Math.max(peso,calcularPesoVolumetrico());
     }
 
     /**
@@ -92,9 +88,7 @@ public class Paquete
      * Se obtienen copias también de los objetos que contenga
      */
     public Paquete obtenerCopia() {
-        //TODO
-        return null;
-
+        return new Paquete();
     }
 
     /**
@@ -102,9 +96,14 @@ public class Paquete
      *  (leer enunciado)
      */
     public String toString() {
-        //TODO
-        return null;
-
+        String real = "Peso real: ";
+        String volumen = "Volumen: ";
+        String volumetrico = "Peso volumétrico: ";
+        String resultado = dimension.toString() + 
+            String.format("\n%20s%10.2f(kg)\n%20s%10.2f(cm3)\n%20s%10.2f(kg)"
+            ,real,peso,volumen,calcularVolumen(),volumetrico
+            ,calcularPesoVolumetrico());
+        return resultado;
     }
 
     /**
