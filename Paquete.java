@@ -8,6 +8,7 @@ import java.util.Random;
  */
 public class Paquete 
 {
+    
     private Random generador;
     private Dimension dimension;
     private double peso;
@@ -17,7 +18,7 @@ public class Paquete
      * Crea el paquete con 40 , 30, 50 de
      * alto, ancho, largo (en cm) y peso 8 Kg
      */
-    public Paquete()    {
+    public Paquete() {
         dimension = new Dimension(40,30,50);
         peso = 8;
     }
@@ -88,7 +89,7 @@ public class Paquete
      * Se obtienen copias también de los objetos que contenga
      */
     public Paquete obtenerCopia() {
-        return new Paquete();
+        return null;
     }
 
     /**
@@ -114,5 +115,4 @@ public class Paquete
     public void print() {
         System.out.println(this.toString());
     }
-
 }

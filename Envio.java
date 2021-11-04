@@ -72,13 +72,7 @@ public class Envio
      * (tiene exactamente 3 paquetes)
      */
     public boolean envioCompleto() {
-        if(getNumeroPaquetes() == 3){
-            return true;
-        }
-        else{
-            return false;
-        }
-
+        return getNumeroPaquetes() == 3;
     }
 
     /**
@@ -115,8 +109,20 @@ public class Envio
      *  
      */
     public double calcularCosteTotalEnvio() {
-        return Math.round(paquete1.calcularPesoFacturable() + paquete2.calcularPesoFacturable()
-            + paquete3.calcularPesoFacturable()) * PRECIO_KILO ;
+        double costeTotal = 0;
+        if(paquete1 != null && paquete2 == null && paquete3 == null){
+            costeTotal = Math.round(paquete1.calcularPesoFacturable()) * PRECIO_KILO;
+        }
+        else if(paquete1 != null && paquete2 != null && paquete3 == null){
+            costeTotal = (Math.round(paquete1.calcularPesoFacturable()) +
+                paquete2.calcularPesoFacturable()) * PRECIO_KILO;
+        }
+        else{
+            costeTotal = Math.round(paquete1.calcularPesoFacturable() +
+                paquete2.calcularPesoFacturable() + paquete3.calcularPesoFacturable())
+            * PRECIO_KILO ;
+        }
+        return costeTotal;
     }
 
     /**
@@ -125,12 +131,23 @@ public class Envio
      * (leer enunciado)
      */
     public String toString() {
+        String result = "";
+        String paquetes = "Nº paquetes: " + getNumeroPaquetes();
         String resultado1 = String.format("\n\n%20s%10.2f€",
                 "Coste total envío: ", calcularCosteTotalEnvio());
-        String resultado2 = String.format("%s%d","Nº de paquetes: ",getNumeroPaquetes()) + 
-            "\n" + paquete1.toString() + "\n\n" +
-            paquete2.toString() + "\n\n" + paquete3.toString();
-        return resultado2 + resultado1;
+        if(paquete1 != null && paquete2 == null && paquete3 == null){
+            result = paquetes + paquete1.toString() + resultado1;
+        }
+        else if(paquete1 != null && paquete2 != null && paquete3 == null){
+            result = paquetes + "\n" + 
+                paquete1.toString() + "\n\n" + paquete2.toString() + resultado1;
+        }
+        else{
+            result = paquetes + "\n" + 
+                paquete1.toString() + "\n\n" + paquete2.toString() + "\n\n" +
+                paquete3.toString() + resultado1;
+        }
+        return result;
     }
 
     /**
