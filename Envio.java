@@ -111,14 +111,14 @@ public class Envio
     public double calcularCosteTotalEnvio() {
         double costeTotal = 0;
         if(paquete1 != null && paquete2 == null && paquete3 == null){
-            costeTotal = Math.round(paquete1.calcularPesoFacturable()) * PRECIO_KILO;
+            costeTotal = Math.ceil(paquete1.calcularPesoFacturable()) * PRECIO_KILO;
         }
         else if(paquete1 != null && paquete2 != null && paquete3 == null){
-            costeTotal = (Math.round(paquete1.calcularPesoFacturable()) +
+            costeTotal = (Math.ceil(paquete1.calcularPesoFacturable()) +
                 paquete2.calcularPesoFacturable()) * PRECIO_KILO;
         }
         else{
-            costeTotal = Math.round(paquete1.calcularPesoFacturable() +
+            costeTotal = Math.ceil(paquete1.calcularPesoFacturable() +
                 paquete2.calcularPesoFacturable() + paquete3.calcularPesoFacturable())
             * PRECIO_KILO ;
         }
